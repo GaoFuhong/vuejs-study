@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+</head>
+<body>
+    <!-- 1.引入vue.js
+         2.创建vue对象：el: 指定根element（选择器） data: 初始化数据（页面可以访问）
+         3.v-model：双向数据绑定
+         4.{{xxx}}：显示数据
+         5.MVVM：M：model 
+    -->
+    <div id="app"> <!-- view 视图--> 
+        <input type="text" v-model="username">
+        <p>Hello {{username}}</p>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        // vm配置对象
+        const vm = new Vue({
+            el: '#app',
+            data: {  // model(数据) 
+                username: 'gfh'
+            }
+        })
+    </script>
+</body>
+</html>
