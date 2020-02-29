@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染</title>
+</head>
+<body>
+    <div id="demo">
+        <p v-if="ok">成功了</p> 
+        <p v-else>失败了</p> <!-- v-if 将标签删除/重新创建 -->
+        <p v-show="ok">success</p>
+        <p v-show="!ok">fail</p> <!-- v-show 通过样式style="dispaly:none"来控制显示隐藏 -->
+        <button @click="ok = !ok">切换</button>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: "#demo",
+            data: {
+                ok: false
+            }
+        })
+    </script>
+</body>
+</html>

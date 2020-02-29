@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表渲染1</title>
+</head>
+<body>
+    <div id="demo">
+        <h1>测试：v-for遍历数组</h1>
+        <ul>
+            <li v-for="(person,index) in persons" :key="index">
+                {{index + 1}}---{{person.name}}---{{person.age}}---
+                <button @click="deleteP(index)">删除</button>---
+                <button @click="updateP(index, {name: 'gfh', age: 24})">更新</button>
+            </li>
+        </ul>
+        <h1>测试：v-for遍历对象</h1>
+        <ul>
+            <li v-for="(value,key) in persons[1]" :key="key">
+                {{key}}: {{value}}
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: "#demo",
+            data: {
+                // vue本身只是监视了persons的改变，没有监视数组内部数据的改变
+                // vue重写了数组中一系列改变数组内部数据的方法（先调用原生方法，再更新界面）--->数组内部改变，界面主动更新
+                // 变异方法：push()  pop()  shift() unshift()  splice()  sort()  reverse()
+                persons: [
+                    {name:'Tom', age: 15},
+                    {name:'Jack', age: 12},
+                    {name:'Rose', age: 20},
+                    {name:'Alice', age: 17}
+                ]
+            },
+            methods: {
+                deleteP(index) {
+                    this.persons.splice(index, 1)
+                },
+                updateP(index, newP) {
+                    this.persons.splice(index, 1, newP)
+                }
+            }  
+        })
+    </script>
+</body>
+</html>

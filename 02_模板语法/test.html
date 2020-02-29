@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板语法</title>
+</head>
+<body>
+    <div id="app">
+        <h1>1、大括号表达式</h1>
+            <p>{{msg}}</p>
+            <p>{{msg.toUpperCase()}}</p>
+            <p>{{msg.toLowerCase()}}</p>
+            <p v-text="msg"></p> <!--textContent-->
+            <p v-html="msg"></p> <!--innerHTML-->
+        <h1>2、指令一：强制数据绑定 v-bind(:)</h1>
+            <img :src="imgUrl">
+        <h1>3、指令二：绑定事件监听</h1>
+            <button v-on:click="alert1">点击</button>
+            <button @click="alert2(msg)">点击</button>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        const vm = new Vue({
+            el: "#app",
+            data: {
+                msg: '<a href="https://cn.vuejs.org/"> I love Guxiao! </a>',
+                imgUrl: 'https://cn.vuejs.org/images/logo.png'
+            },
+            methods: {
+                alert1() {
+                    alert('OK')
+                },
+                alert2(content) {
+                    alert(content)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
