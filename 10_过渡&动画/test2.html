@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>过渡&动画2</title>
+    <style>
+        .bounce-enter-active {
+            animation: bounce-in 1s;
+        }
+        .bounce-leave-active {
+            animation: bounce-in 1s reverse;
+        }
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <button @click="isShow = !isShow">toggle</button>
+        <br>
+        <transition name="bounce">
+            <p v-show="isShow" style="display: inline-block;">I love Guxiao 1314!</p>
+        </transition>
+    </div>
+</body>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: "#demo",
+        data () {
+            return {
+                isShow: true
+            }
+        }
+    })
+</script>
+</html>

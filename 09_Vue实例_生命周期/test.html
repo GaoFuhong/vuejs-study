@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue实例_生命周期</title>
+</head>
+<body>
+    <div id="test">
+        <button @click="destoryVM">destory vm</button>
+        <p v-show="isShow">我爱古晓</p>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: "#test",
+            data: {
+                isShow: true
+            },
+            // 1、初始化阶段
+            beforeCreate () {
+                console.log("beforeCreate()")  
+            },
+            created () {
+                console.log("created()")
+            },
+            beforeMount () {
+                console.log("beforeMount()")
+            },
+            mounted () { // 初始化显示之后立即调用（调用1次）
+                this.intervalId = setInterval( () => {
+                    console.log("mounted()")
+                    this.isShow = !this.isShow
+                }, 1000)
+            },
+
+            // 2、更新阶段
+            beforeUpdate () {
+                console.log("beforeUpdate()")
+            },
+            updated () {
+                console.log("updated()")  
+            },
+
+            // 3、死亡阶段
+            beforeDestroy () { // 死亡之前调用（调用1次
+                console.log("beforeDestory()")
+                clearInterval(this.intervalId)  
+            },
+            destroyed () {
+                console.log("destoryed()")  
+            },
+            methods: {
+                destoryVM() {
+                    this.$destroy()
+                }
+            }
+        })
+    </script>
+</body>
+</html>
