@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>指令</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="test">
+        <!-- 指令：
+        1、v-text 更新元素的textContent
+        2、v-html 更新元素的innerHTML
+        3、v-if 如果为true，当前标签才会输出到页面
+        4、v-else 如果为false，当前标签才会输出到页面
+        5、v-show 通过控制display样式来控制显示/隐藏
+        6、v-for 遍历数组/对象
+        7、v-on 绑定事件监听，一般简写为@
+        8、v-bind: 强制绑定解析表达式，一般省略v-bind
+        9、v-model 双向数据绑定
+        10、ref 为某个元素注册一个唯一标示，vue对象通过$els访问元素对象
+        11、v-cloak 使用它防止闪现表达式，与css配合：[v-cloak] {display: none} -->
+        <p ref="content">I love Guxiao 1314!</p>
+        <button @click="alert">提示</button>
+        <p v-cloak>{{msg}}</p>
+    </div>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <script type="text/javascript">
+        alert("----")
+        new Vue({
+            el: "#test",
+            data () {
+                return {
+                    msg: "hehehe"
+                }
+            },
+            methods: {
+                alert () {
+                    alert(this.$refs.content.textContent)
+                }
+            }
+        })
+    </script>
+</body>
+</html>
